@@ -1,0 +1,59 @@
+-- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
+--
+-- Host: localhost    Database: ToyStore
+-- ------------------------------------------------------
+-- Server version	5.6.28
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Order_Details`
+--
+
+DROP TABLE IF EXISTS `Order_Details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Order_Details` (
+  `Order_id` int(11) NOT NULL,
+  `Toy_Id` int(11) NOT NULL,
+  `Purchase_Id` int(11) NOT NULL,
+  `Price` decimal(12,2) DEFAULT NULL,
+  `Quantity` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Order_id`,`Toy_Id`,`Purchase_Id`),
+  KEY `Order_Details_FK2_idx` (`Toy_Id`),
+  KEY `Order_Details_FK3_idx` (`Purchase_Id`),
+  CONSTRAINT `Order_Details_FK1` FOREIGN KEY (`Order_id`) REFERENCES `Orders_Main` (`Order_Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Order_Details_FK2` FOREIGN KEY (`Toy_Id`) REFERENCES `Toy` (`toy_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Order_Details_FK3` FOREIGN KEY (`Purchase_Id`) REFERENCES `purchased` (`purchase_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Order_Details`
+--
+
+LOCK TABLES `Order_Details` WRITE;
+/*!40000 ALTER TABLE `Order_Details` DISABLE KEYS */;
+INSERT INTO `Order_Details` VALUES (10,105,84,45.88,1),(10,106,85,19.99,2),(10,134,86,1000.00,1),(11,113,90,14.20,2),(11,114,89,10.99,1),(11,122,87,6.99,4),(11,128,88,3.99,1),(12,108,95,29.99,1),(12,122,91,6.99,2),(12,124,92,26.99,1),(12,125,93,45.99,3),(12,132,94,69.99,1),(13,106,96,19.99,1);
+/*!40000 ALTER TABLE `Order_Details` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-12-07 12:21:18

@@ -1,0 +1,37 @@
+/** Your theme modifications here **/
+
+#main-slider, #main-slider img {
+  height:300px;
+}
+
+.product-slider img {
+  height:10em;
+}
+
+#logo{
+	height:auto;
+	width:6em;
+}
+
+#main-slider, #main-slider img{
+	height:350px;
+}
+
+.products{
+	height: 400px;
+}
+
+.products img{
+	width: 100%;
+	height: 200px;
+}
+
+.products h3{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	vertical-align: text-bottom;
+}
+
+.products-sort-by{
+	text-align: right;
+}
